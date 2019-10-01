@@ -121,6 +121,8 @@ button:hover {
   left: 15%;
   font-family: 'Cedarville Cursive';
   font-size: 1.4em;
+  width: 85%;
+  text-align: left;
 }
 
 .action .checkbox-container {

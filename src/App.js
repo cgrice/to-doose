@@ -25,7 +25,7 @@ function App() {
     let file = e.target.files[0]
 
     reader.onloadend = () => {
-      setImage(reader.result)
+      
       const image = new Image();
       image.src = reader.result;
       image.onload = function() {
@@ -34,10 +34,16 @@ function App() {
 
         console.log(image.width, image.height)
         console.log(w, h)
-        setImageSize({
-          w,
-          h
-        })
+
+        if(w < 700) {
+          alert('Please select an image which is at least 700px wide')
+        } else {
+          setImage(reader.result)
+          setImageSize({
+            w,
+            h
+          })
+        }
       }
     }
 
