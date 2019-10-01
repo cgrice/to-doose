@@ -21,6 +21,8 @@
 
 body {
   background-color: #5972E0;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -95,26 +97,30 @@ button:hover {
 }
 
 .image {
+  position: relative;
   display: flex;
   align-items: flex-end;
   justify-content: center;
 }
 
-.todo {
-  position: relative;
-  flex: 0 0 auto;
-  width: 600px;
-  height: 115px;
-  background-size: 600px auto;
-  background-image: url(./todopaper.png);
+.image img.bg {
+  width: 100%;
 }
 
-.todo span {
+.todo {
   position: absolute;
-  top: 40px;
-  left: 50px;
+  flex: 0 0 auto;
+  width: 600px;
+  height: auto;
+  background-size: 600px auto;
+}
+
+.todo-text {
+  position: absolute;
+  bottom: 6%;
+  left: 15%;
   font-family: 'Cedarville Cursive';
-  font-size: 24px;
+  font-size: 1.4em;
 }
 
 .action .checkbox-container {
@@ -185,4 +191,56 @@ button:hover {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
+}
+
+
+@media screen and (max-width: 700px) {
+  .App {
+    width: 94%; 
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .form {
+    flex-direction: column;
+  }
+
+  .imageWrap {
+    max-width: 100%!important;
+  }
+
+  .image,
+  .image img.bg {
+    width: 100%!important;
+    height: auto!important;
+  }
+
+  .todo {
+    width: 90%;
+  }
+
+  .todo-text {
+    left: 14%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  h1 {
+    margin: 0;
+  }
+  .todo-text {
+    left: 14%;
+    font-size: 1.1em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .todo-text {
+    left: 14%;
+    font-size: 0.8em;
+  }
+
+  .action input[type=text] {
+    width: 85%;
+  }
 }

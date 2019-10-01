@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import './App.css'
 import CheckBox from './CheckBox'
+import todoBg from './todopaper.png'
 
 import domtoimage from 'dom-to-image'
 import { saveAs } from 'file-saver'
@@ -80,21 +81,19 @@ function App() {
       
       {image && (
         <div className="imageWrap">
-          <div ref={outputRef} className="image" style={{
-            backgroundImage: `url("${image}")`,
+          <div className="image" ref={outputRef} style={{
             width: imageSize.w,
             height: imageSize.h,
-            backgroundSize: `${imageSize.w}px ${imageSize.h}px`,
           }}>
-            <div className="todo">
-              <span
-                style={{
-                  textDecoration: complete ? 'line-through' : 'none'
-                }}
-              >
-                {text}
-              </span>
-            </div>
+            <img className="bg" src={image} alt="todo" />
+            <img className="todo" src={todoBg} />
+            <span className="todo-text"
+              style={{
+                textDecoration: complete ? 'line-through' : 'none'
+              }}
+            >
+              {text}
+            </span>
           </div>
         </div>
         
