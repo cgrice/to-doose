@@ -1,22 +1,188 @@
+/* latin */
+@font-face {
+  font-family: 'Cedarville Cursive';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Cedarville Cursive'), local('Cedarville-Cursive'), url(https://fonts.gstatic.com/s/cedarvillecursive/v11/yYL00g_a2veiudhUmxjo5VKkoqA-B_nuIrpw4cNOTw.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin */
+@font-face {
+  font-family: 'Delius';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Delius-Regular'), url(https://fonts.gstatic.com/s/delius/v9/PN_xRfK0pW_9e1rdZsg_rz7b_g.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+
+body {
+  background-color: #5972E0;
+}
+
+
 .App {
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+h1 {
+  color: #F9FBFF;
+  font-size: 3em;
+  font-family: 'Delius', monospace;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  color: #F9FBFF;
+  font-size: 1.5em;
+  margin-bottom: 1em;
 }
 
-.App-link {
-  color: #09d3ac;
+.row {
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.action {
+  display: block;
+  margin: 10px 0;
+}
+
+.action input[type=text] {
+  border: none;
+  outline: none;
+  color: #F9FBFF;
+  background-color: transparent;
+  font-size: 1em;
+  width: 90%;
+  border-bottom: 2px dashed #9ba5c6;
+  text-align: left;
+}
+
+.action input[type=text]::placeholder { 
+  color: #9ba5c6;
+}
+
+button {
+  background-color: #B0514D;
+  border: none;
+  outline: none;
+  padding: 0.5em 1em;
+  font-size: 2em;
+  margin: 1em;
+  color: #F9FBFF;
+}
+
+button:hover {
+  background-color: rgb(179, 61, 57);
+  cursor: pointer;
+}
+
+.imageWrap {
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.image {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.todo {
+  position: relative;
+  flex: 0 0 auto;
+  width: 600px;
+  height: 115px;
+  background-size: 600px auto;
+  background-image: url(./todopaper.png);
+}
+
+.todo span {
+  position: absolute;
+  top: 40px;
+  left: 50px;
+  font-family: 'Cedarville Cursive';
+  font-size: 24px;
+}
+
+.action .checkbox-container {
+  float: left;
+  margin-top: 4px;
+}
+
+.checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #F9FBFF;
+}
+
+/* On mouse-over, add a grey background color */
+.checkbox-container:hover input ~ .checkmark {
+  background-color: #eee;
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkbox-container input:checked ~ .checkmark {
+  background-color: #8CAC6D;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkbox-container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid #F9FBFF;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
 }

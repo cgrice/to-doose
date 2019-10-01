@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "dom-to-image": "git+https://github.com/MichalBryxi/dom-to-image.git",
+    "file-saver": "^2.0.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-scripts": "3.1.2"
