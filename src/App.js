@@ -7,13 +7,18 @@ import domtoimage from 'dom-to-image'
 import { saveAs } from 'file-saver'
 import { Helmet } from 'react-helmet'
 
-import axios from 'axios'
+const isFacebookApp = () => {
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+}
 
 function App() {
   const [text, setText] = useState('')
   const [complete, setComplete] = useState(false)
   const [image, setImage] = useState(false)
   const [imageSize, setImageSize] = useState({ w: 0, h: 0 })
+  const [generating, setGenerating] = useState(false)
+
   const outputRef = useRef()
 
   const handleChange = (e) => {
@@ -53,16 +58,23 @@ function App() {
   }
 
   const download = async () => {
+    setGenerating(true)
     const blob = await domtoimage.toBlob(outputRef.current)
-    const formData = new FormData()
-    formData.append('image', blob)
 
-    const response = await fetch('/.netlify/functions/upload', {
-      method: "POST",
-      body: blob,
-    })
-    const { uploadedFile, filename } = await response.json()
-    saveAs(uploadedFile, filename)
+    if(isFacebookApp()) {
+      const formData = new FormData()
+      formData.append('image', blob)
+  
+      const response = await fetch('/.netlify/functions/upload', {
+        method: "POST",
+        body: blob,
+      })
+      const { uploadedFile, filename } = await response.json()
+      saveAs(uploadedFile, filename)
+    } else {
+      saveAs(blob, `to-doose-${Date.now()}.png`)
+    }
+    setGenerating(false)
   }
 
   return (
@@ -127,7 +139,7 @@ function App() {
             <CheckBox onChange={toggleComplete} />
             <p>Is your task complete?</p>
           </div>
-          <button onClick={download}>honk</button>
+          <button disabled={generating} onClick={download}>{generating ? 'working...' : 'honk'}</button>
         </div>
       )}
 
