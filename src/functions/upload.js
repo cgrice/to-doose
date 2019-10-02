@@ -37,7 +37,5 @@ exports.handler = function(event, context, callback) {
 
 
 const getHash = (event) => {
-    const shasum = crypto.createHash('sha1')
-    shasum.update(JSON.stringify(event))
-    return shasum.digest('hex')
+    return Date.now()
 }
