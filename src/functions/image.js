@@ -1,6 +1,4 @@
-process.env.AWS_ACCESS_KEY_ID = process.env.ENV_AWS_ACCESS_KEY_ID
-process.env.AWS_SECRET_ACCESS_KEY = process.env.ENV_AWS_SECRET_ACCESS_KEY
-process.env.AWS_REGION = process.env.ENV_AWS_REGION
+require('dotenv').config()
 
 const AWS = require('aws-sdk')
 const path = require('path')

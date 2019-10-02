@@ -6,6 +6,8 @@
     "aws-sdk": "^2.540.0",
     "axios": "^0.19.0",
     "dom-to-image": "git+https://github.com/MichalBryxi/dom-to-image.git",
+    "dotenv": "^8.1.0",
+    "envsub": "^3.0.9",
     "file-saver": "^2.0.2",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
@@ -14,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "envsub .env.template .env && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
