@@ -7,12 +7,18 @@ import domtoimage from 'dom-to-image'
 import { saveAs } from 'file-saver'
 import { Helmet } from 'react-helmet'
 
+const isFacebookApp = () => {
+  var ua = navigator.userAgent || navigator.vendor || window.opera;
+  return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+}
 
 function App() {
   const [text, setText] = useState('')
   const [complete, setComplete] = useState(false)
   const [image, setImage] = useState(false)
   const [imageSize, setImageSize] = useState({ w: 0, h: 0 })
+  const [generating, setGenerating] = useState(false)
+
   const outputRef = useRef()
 
   const handleChange = (e) => {
@@ -26,15 +32,11 @@ function App() {
     let file = e.target.files[0]
 
     reader.onloadend = () => {
-      
       const image = new Image();
       image.src = reader.result;
       image.onload = function() {
         const w = image.width >= 700 ? 700 : image.width
         const h = (w / image.width) * image.height
-
-        console.log(image.width, image.height)
-        console.log(w, h)
 
         if(w < 300) {
           alert('Please select an image which is at least 300px wide')
@@ -56,8 +58,24 @@ function App() {
   }
 
   const download = async () => {
+    setGenerating(true)
     const blob = await domtoimage.toBlob(outputRef.current)
-    saveAs(blob, `to-doose-output-${Date.now()}.png`)
+
+    if(isFacebookApp()) {
+      const formData = new FormData()
+      formData.append('image', blob)
+  
+      const response = await fetch('/.netlify/functions/upload', {
+        method: "POST",
+        body: blob,
+      })
+      const { uploadedFile, filename } = await response.json()
+      saveAs(uploadedFile, filename)
+    } else {
+      alert(blob.toString('base64'))
+      saveAs(blob, `to-doose-${Date.now()}.png`)
+    }
+    setGenerating(false)
   }
 
   return (
@@ -67,7 +85,13 @@ function App() {
         <meta name="description" content="It is a lovely day on the internet, and you are a terrible goose." />
       </Helmet> 
       <h1>to-doose</h1>
+      
       <div className="form">
+        {isFacebookApp() && (
+          <p>Hi! You're using the Facebook in-app browser, which doesn't work very well with this website.
+            You might have a better time opening it in Chrome or Firefox.
+          </p>
+        )}
         <div className="row">
           <span className="action">
             <label className="image-select" for="image">Choose an Image</label>
@@ -122,7 +146,7 @@ function App() {
             <CheckBox onChange={toggleComplete} />
             <p>Is your task complete?</p>
           </div>
-          <button onClick={download}>honk</button>
+          <button disabled={generating} onClick={download}>{generating ? 'working...' : 'honk'}</button>
         </div>
       )}
 
@@ -131,7 +155,7 @@ function App() {
         their <a href="https://goose.game">Untitled Goose Game</a>.
       </footer>
     </div>
-  );
+  )
 }
 
 export default App;
