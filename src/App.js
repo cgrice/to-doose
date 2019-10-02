@@ -7,6 +7,7 @@ import domtoimage from 'dom-to-image'
 import { saveAs } from 'file-saver'
 import { Helmet } from 'react-helmet'
 
+import axios from 'axios'
 
 function App() {
   const [text, setText] = useState('')
@@ -26,15 +27,11 @@ function App() {
     let file = e.target.files[0]
 
     reader.onloadend = () => {
-      
       const image = new Image();
       image.src = reader.result;
       image.onload = function() {
         const w = image.width >= 700 ? 700 : image.width
         const h = (w / image.width) * image.height
-
-        console.log(image.width, image.height)
-        console.log(w, h)
 
         if(w < 300) {
           alert('Please select an image which is at least 300px wide')
@@ -57,14 +54,15 @@ function App() {
 
   const download = async () => {
     const blob = await domtoimage.toBlob(outputRef.current)
-    const file = new File(["hello world"], `to-doose-output-${Date.now()}.txt`, {type: "text/plain"});
+    const formData = new FormData()
+    formData.append('image', blob)
 
-    try {
-      // saveAs(file)
-      saveAs("/logo192.png", "logo192.jpg")
-    } catch(error) {
-      alert(error.message)
-    }
+    const response = await fetch('/.netlify/functions/upload', {
+      method: "POST",
+      body: blob,
+    })
+    const { uploadedFile, filename } = await response.json()
+    saveAs(uploadedFile, filename)
   }
 
   return (

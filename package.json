@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-sdk": "^2.540.0",
+    "axios": "^0.19.0",
     "dom-to-image": "git+https://github.com/MichalBryxi/dom-to-image.git",
     "file-saver": "^2.0.2",
     "react": "^16.10.1",
