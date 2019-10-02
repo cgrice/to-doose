@@ -8,8 +8,11 @@ exports.handler = function(event, context, callback) {
         secretAccessKey : process.env.ENV_AWS_SECRET_ACCESS_KEY,
     })
 
+    console.log('buffering')
     const buffer = Buffer.from(event.body, 'base64')
+    console.log('getting hash')
     const fileHash = getHash(event)
+    console.log('uploading to s3')
 
     s3.putObject({
         Bucket: 'to-doose-images',
@@ -17,6 +20,7 @@ exports.handler = function(event, context, callback) {
         Body: buffer,
         ContentType: 'image/png'
     }, (error, data) => {
+        console.log('done')
         if (error) {
             callback(null, {
                 statusCode: 500,

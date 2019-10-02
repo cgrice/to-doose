@@ -25,8 +25,6 @@ exports.handler = function(event, context, callback) {
                   'Content-Disposition': `attachment; filename="to-doose-${key}.png`,
                   'Content-Transfer-Encoding': 'binary',
                   'Accept-Ranges': 'bytes',
-                  'Cache-Control': 'private',
-                  'Pragma': 'private',
                 },
                 body: data.Body.toString('base64'),
                 isBase64Encoded: true
