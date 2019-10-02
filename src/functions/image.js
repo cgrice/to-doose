@@ -11,7 +11,7 @@ exports.handler = function(event, context, callback) {
     const key = path.basename(event.path)
     
     s3.getObject({
-        Bucket: 'to-doose-images-nope',
+        Bucket: 'to-doose-images',
         Key: `${key}.png`,
     }, (err, data) => {
         if (err) {
