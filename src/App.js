@@ -61,7 +61,7 @@ function App() {
 
     try {
       // saveAs(file)
-      saveAs("https://httpbin.org/image", "image.jpg")
+      saveAs("/logo192.png", "logo192.jpg")
     } catch(error) {
       alert(error.message)
     }
