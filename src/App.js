@@ -57,9 +57,10 @@ function App() {
 
   const download = async () => {
     const blob = await domtoimage.toBlob(outputRef.current)
-    
+    const file = new File(["hello world"], `to-doose-output-${Date.now()}.txt`, {type: "text/plain"});
+
     try {
-      saveAs(blob, `to-doose-output-${Date.now()}.png`)
+      saveAs(file)
     } catch(error) {
       alert(error.message)
     }
