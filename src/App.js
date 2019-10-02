@@ -71,7 +71,12 @@ function App() {
         <div className="row">
           <span className="action">
             <label className="image-select" for="image">Choose an Image</label>
-            <input type="file" id="image" name="image" onChange={handleImageChange} />
+            <input 
+              type="file" 
+              id="image" 
+              name="image" 
+              onChange={handleImageChange}
+            />
           </span>
         </div>
         {image && (
@@ -80,6 +85,7 @@ function App() {
               <input 
                 type="text" 
                 name="text" 
+                autoComplete="off"
                 placeholder="enter your horrible task" 
                 onChange={handleChange} 
               />
@@ -114,15 +120,16 @@ function App() {
         <div>
           <div className="complete">
             <CheckBox onChange={toggleComplete} />
-            <p>Complete your no-good task?</p>
+            <p>Is your task complete?</p>
           </div>
           <button onClick={download}>honk</button>
         </div>
-        
       )}
 
-      
-      
+      <footer>
+        With ❤️ to <a href="https://househou.se/">House House</a> and
+        their <a href="https://goose.game">Untitled Goose Game</a>.
+      </footer>
     </div>
   );
 }

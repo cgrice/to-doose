@@ -41,6 +41,7 @@ body {
   background-color: #5972E0;
   margin: 0;
   padding: 0;
+  margin-bottom: 3em;
 }
 
 
@@ -50,7 +51,6 @@ body {
   width: 900px;
   text-align: center;
   font-family: 'Cabin', Arial, Helvetica, sans-serif;
-  margin-bottom: 3em;
 }
 
 h1 {
@@ -263,6 +263,15 @@ button:hover,
   align-items: center;
   color: white;
   font-size: 2em;
+}
+
+footer {
+  font-size: 0.8em;
+  color: #F9FBFF;
+}
+
+footer a {
+  color: white;
 }
 
 @media screen and (max-width: 1200px) {
