@@ -2,7 +2,7 @@ const AWS = require('aws-sdk')
 const path = require('path')
 
 exports.handler = function(event, context, callback) {
-    
+
     const s3 = new AWS.S3({
         region : process.env.ENV_AWS_REGION,
         accessKeyId : process.env.ENV_AWS_ACCESS_KEY_ID,
@@ -21,7 +21,12 @@ exports.handler = function(event, context, callback) {
             callback(null, {
                 statusCode: 200,
                 headers: {
-                  'Content-type': 'image/png'
+                  'Content-type': 'image/png',
+                  'Content-Disposition': `attachment; filename="to-doose-${key}.png`,
+                  'Content-Transfer-Encoding': 'binary',
+                  'Accept-Ranges': 'bytes',
+                  'Cache-Control': 'private',
+                  'Pragma': 'private',
                 },
                 body: data.Body.toString('base64'),
                 isBase64Encoded: true
