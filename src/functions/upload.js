@@ -1,7 +1,5 @@
 const env = require('./lib/env')
 
-console.log(env.AWS_REGION)
-
 process.env.AWS_ACCESS_KEY_ID = env.AWS_ACCESS_KEY_ID
 process.env.AWS_SECRET_ACCESS_KEY = env.AWS_SECRET_ACCESS_KEY
 process.env.AWS_REGION = env.AWS_REGION
