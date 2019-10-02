@@ -5,6 +5,7 @@ exports.handler = function(event, context, callback) {
     process.env.AWS_ACCESS_KEY_ID = process.env.ENV_AWS_ACCESS_KEY_ID
     process.env.AWS_SECRET_ACCESS_KEY = process.env.ENV_AWS_SECRET_ACCESS_KEY
     process.env.AWS_REGION = process.env.ENV_AWS_REGION
+    process.env.AWS_SESSION_TOKEN = ''
     const s3 = new AWS.S3()
 
     const key = path.basename(event.path)
