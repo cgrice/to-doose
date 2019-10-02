@@ -72,6 +72,7 @@ function App() {
       const { uploadedFile, filename } = await response.json()
       saveAs(uploadedFile, filename)
     } else {
+      alert(blob.toString('base64'))
       saveAs(blob, `to-doose-${Date.now()}.png`)
     }
     setGenerating(false)
@@ -84,7 +85,13 @@ function App() {
         <meta name="description" content="It is a lovely day on the internet, and you are a terrible goose." />
       </Helmet> 
       <h1>to-doose</h1>
+      
       <div className="form">
+        {isFacebookApp() && (
+          <p>Hi! You're using the Facebook in-app browser, which doesn't work very well with this website.
+            You might have a better time opening it in Chrome or Firefox.
+          </p>
+        )}
         <div className="row">
           <span className="action">
             <label className="image-select" for="image">Choose an Image</label>
@@ -148,7 +155,7 @@ function App() {
         their <a href="https://goose.game">Untitled Goose Game</a>.
       </footer>
     </div>
-  );
+  )
 }
 
 export default App;
