@@ -60,7 +60,8 @@ function App() {
     const file = new File(["hello world"], `to-doose-output-${Date.now()}.txt`, {type: "text/plain"});
 
     try {
-      saveAs(file)
+      // saveAs(file)
+      saveAs("https://httpbin.org/image", "image.jpg")
     } catch(error) {
       alert(error.message)
     }
