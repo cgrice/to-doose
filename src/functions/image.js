@@ -1,4 +1,4 @@
-const env = require('./env')
+const env = require('../env')
 
 console.log(env.AWS_REGION)
 

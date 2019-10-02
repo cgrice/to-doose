@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "envsub src/functions/env.js.dist src/functions/env.js && react-scripts build",
+    "build": "envsub src/env.js.dist src/env.js && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
