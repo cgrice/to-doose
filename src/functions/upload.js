@@ -2,13 +2,11 @@ const crypto = require('crypto')
 const AWS = require('aws-sdk')
 
 exports.handler = function(event, context, callback) {
-    process.env.AWS_ACCESS_KEY_ID = process.env.ENV_AWS_ACCESS_KEY_ID
-    process.env.AWS_SECRET_ACCESS_KEY = process.env.ENV_AWS_SECRET_ACCESS_KEY
-    process.env.AWS_REGION = process.env.ENV_AWS_REGION
-    process.env.AWS_SESSION_TOKEN = ''
-
-    const s3 = new AWS.S3()
-    const lambda = new AWS.Lambda()
+    const s3 = new AWS.S3({
+        region : process.env.ENV_AWS_REGION,
+        accessKeyId : process.env.ENV_AWS_ACCESS_KEY_ID,
+        secretAccessKey : process.env.ENV_AWS_SECRET_ACCESS_KEY,
+    })
 
     const buffer = Buffer.from(event.body, 'base64')
     const fileHash = getHash(event)
@@ -19,7 +17,6 @@ exports.handler = function(event, context, callback) {
         Body: buffer,
         ContentType: 'image/png'
     }, (error, data) => {
-
         if (error) {
             callback(null, {
                 statusCode: 500,
