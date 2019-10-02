@@ -88,6 +88,10 @@ h1 {
   padding: 0.5em;
 }
 
+.image-select:hover {
+  background-color: rgb(228, 204, 69);
+}
+
 .action input[type=file] {
   width: 0.1px;
 	height: 0.1px;
@@ -118,7 +122,7 @@ button {
   border: none;
   outline: none;
   padding: 0.5em 1em;
-  font-size: 2em;
+  font-size: 1.6em;
   color: #F9FBFF;
 }
 
