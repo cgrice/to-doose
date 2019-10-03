@@ -203,6 +203,24 @@ button.btn-secondary:hover {
     color: black;
 }
 
+.action .checkbox-container {	
+  float: left;	
+  margin-top: 4px;	
+}	
+
+ .checkbox-container {	
+  display: block;	
+  position: relative;	
+  margin-right: 2em;	
+  cursor: pointer;	
+  font-size: 22px;	
+  -webkit-user-select: none;	
+  -moz-user-select: none;	
+  -ms-user-select: none;	
+  user-select: none;	
+  height: 25px;	
+}
+
 .checkbox-container input {
   position: absolute;
   opacity: 0;
