@@ -39,11 +39,16 @@
 
 body {
   background-color: #5972E0;
+  color: #F9FBFF;
   margin: 0;
   padding: 0;
   margin-bottom: 3em;
 }
 
+p {
+  font-size: 1.5em;
+
+}
 
 .App {
   margin-left: auto;
@@ -77,6 +82,8 @@ h1 {
   display: block;
   margin: 10px 0;
 }
+
+
 
 .image-select {
   background-color: #D8C34E;
@@ -118,7 +125,8 @@ h1 {
 }
 
 button {
-  background-color: #B0514D;
+  background-color: #D8C34E;
+  
   border: none;
   outline: none;
   padding: 0.5em 1em;
@@ -127,8 +135,25 @@ button {
 }
 
 button:hover {
-  background-color: rgb(179, 61, 57);
+  background-color: rgb(228, 204, 69);
   cursor: pointer;
+}
+
+button.btn-primary {
+  background-color: #8CAC6D;
+  
+}
+
+button.btn-primary:hover {
+  background-color: rgb(110, 150, 70);
+}
+
+button.btn-secondary {
+  background-color: #B0514D;
+}
+
+button.btn-secondary:hover {
+  background-color: rgb(179, 61, 57);
 }
 
 .imageWrap {
@@ -266,7 +291,6 @@ button:hover,
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 2em;
 }
 
 footer {
@@ -321,9 +345,6 @@ footer a {
     width: 80%;
   }
 
-  .complete {
-    font-size: 1.5em;
-  }
 }
 
 @media screen and (max-width: 550px) {
