@@ -78,6 +78,8 @@ h1 {
   margin: 10px 0;
 }
 
+
+
 .image-select {
   background-color: #D8C34E;
   color: #F9FBFF;
@@ -118,7 +120,8 @@ h1 {
 }
 
 button {
-  background-color: #B0514D;
+  background-color: #D8C34E;
+  
   border: none;
   outline: none;
   padding: 0.5em 1em;
@@ -127,8 +130,25 @@ button {
 }
 
 button:hover {
-  background-color: rgb(179, 61, 57);
+  background-color: rgb(228, 204, 69);
   cursor: pointer;
+}
+
+button.btn-primary {
+  background-color: #8CAC6D;
+  
+}
+
+button.btn-primary:hover {
+  background-color: rgb(110, 150, 70);
+}
+
+button.btn-secondary {
+  background-color: #B0514D;
+}
+
+button.btn-secondary:hover {
+  background-color: rgb(179, 61, 57);
 }
 
 .imageWrap {

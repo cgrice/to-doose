@@ -39,6 +39,10 @@ const CreatePage = ({
           </p>
         )}
 
+        {!image && (
+          <p>It is a beautiful day on the internet and you can be a terrible goose.</p>
+        )}
+
         <div className="row">
           <span className="action">
             <UploadButton name="source" onSelectFile={handleImageChange} />

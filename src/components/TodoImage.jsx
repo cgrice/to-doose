@@ -23,8 +23,8 @@ const TodoImage = ({
     const render = async () => {
         setGenerating(true)
         const blob = await domtoimage.toBlob(outputRef.current)
-        onGenerate(URL.createObjectURL(blob))
         setGenerating(false)
+        onGenerate(URL.createObjectURL(blob))
     }
 
     return (
@@ -58,10 +58,11 @@ const TodoImage = ({
                 <p>Is your task complete?</p>
             </div>
             <button 
+                className="btn-primary"
                 disabled={generating} 
                 onClick={render}
             >
-                {generating ? 'working...' : 'honk'}
+                {generating ? 'honking' : 'generate'}
             </button>
         </div>
     )
