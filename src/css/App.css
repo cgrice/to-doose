@@ -39,11 +39,16 @@
 
 body {
   background-color: #5972E0;
+  color: #F9FBFF;
   margin: 0;
   padding: 0;
   margin-bottom: 3em;
 }
 
+p {
+  font-size: 1.5em;
+
+}
 
 .App {
   margin-left: auto;
@@ -286,7 +291,6 @@ button:hover,
   justify-content: center;
   align-items: center;
   color: white;
-  font-size: 2em;
 }
 
 footer {
@@ -341,9 +345,6 @@ footer a {
     width: 80%;
   }
 
-  .complete {
-    font-size: 1.5em;
-  }
 }
 
 @media screen and (max-width: 550px) {

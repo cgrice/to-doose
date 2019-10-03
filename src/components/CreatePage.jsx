@@ -32,16 +32,18 @@ const CreatePage = ({
 
   return (
     <div>
+      {!image && (
+        <p>It is a beautiful day on the internet and you can be a terrible goose.</p>
+      )}
+      {isFacebookApp() && (
+        <p>Hi! You're using the Facebook in-app browser, which doesn't work very well with this website.
+          You might have a better time opening it in Chrome or Firefox.
+        </p>
+      )}
       <div className="form">
-        {isFacebookApp() && (
-          <p>Hi! You're using the Facebook in-app browser, which doesn't work very well with this website.
-            You might have a better time opening it in Chrome or Firefox.
-          </p>
-        )}
+        
 
-        {!image && (
-          <p>It is a beautiful day on the internet and you can be a terrible goose.</p>
-        )}
+        
 
         <div className="row">
           <span className="action">
