@@ -193,31 +193,14 @@ button.btn-secondary:hover {
 }
 
 .todo-text {
-  position: absolute;
-  bottom: 33%;
-  left: 10%;
-  font-family: 'Cedarville Cursive';
-  font-size: 1.4em;
-  width: 85%;
-  text-align: left;
-}
-
-.action .checkbox-container {
-  float: left;
-  margin-top: 4px;
-}
-
-.checkbox-container {
-  display: block;
-  position: relative;
-  margin-right: 2em;
-  cursor: pointer;
-  font-size: 22px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  height: 25px;
+    position: absolute;
+    bottom: 28%;
+    left: 10%;
+    font-family: "Cedarville Cursive";
+    font-size: 0.8em;
+    width: 85%;
+    text-align: left;
+    color: black;
 }
 
 .checkbox-container input {
